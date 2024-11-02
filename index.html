@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Clínica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        input[type="text"], input[type="password"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        .back-button {
+            background-color: #d9534f;
+        }
+        button.back-button:hover {
+            background-color: #c9302c;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        .patient-list {
+            margin-top: 20px;
+        }
+        .patient-item {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="login-container">
+    <h1>Login</h1>
+    <div id="error-login" class="error"></div>
+    <input type="text" id="username" placeholder="Usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="login()">Ingresar</button>
+</div>
+
+<div class="container" id="patient-form" style="display:none;">
+    <h1>Ficha del Paciente</h1>
+    <div id="error-patient" class="error"></div>
+    <input type="text" id="patient-name" placeholder="Nombre del paciente">
+    <input type="text" id="patient-age" placeholder="Edad">
+    <input type="text" id="patient-pathology" placeholder="Patología">
+    <select id="patient-area">
+        <option value="Urgencias">Urgencias</option>
+        <option value="Medicina General">Medicina General</option>
+        <option value="Emergencias">Emergencias</option>
+    </select>
+    <label>
+        <input type="checkbox" id="requires-exam"> Necesita Examen
+    </label>
+    <button onclick="savePatient()">Guardar Ficha</button>
+    <button class="back-button" onclick="goBack()">Volver Atrás</button>
+
+    <div class="patient-list" id="patient-list">
+        <h2>Pacientes Guardados</h2>
+    </div>
+</div>
+
+<script>
+    // Array para manejar usuarios de la clínica (médicos, administradores)
+    const users = [
+        { username: 'admin', password: 'admin123', role: 'admin' },
+        { username: 'doctor1', password: 'doctor123', role: 'doctor' },
+        { username: 'doctor2', password: 'doctor123', role: 'doctor' }
+    ];
+
+    // Array para almacenar las fichas de los pacientes
+    const patients = [];
+
+    // Login básico
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const user = users.find(u => u.username === username && u.password === password);
+
+        if (user) {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('patient-form').style.display = 'block';
+        } else {
+            document.getElementById('error-login').innerText = 'Usuario o contraseña incorrectos';
+        }
+    }
+
+    // Guardar ficha del paciente
+    function savePatient() {
+        const name = document.getElementById('patient-name').value;
+        const age = document.getElementById('patient-age').value;
+        const pathology = document.getElementById('patient-pathology').value;
+        const area = document.getElementById('patient-area').value;
+        const requiresExam = document.getElementById('requires-exam').checked;
+
+        if (!name || !age || !pathology) {
+            document.getElementById('error-patient').innerText = 'Todos los campos son obligatorios';
+            return;
+        }
+
+        const patient = {
+            name,
+            age,
+            pathology,
+            area,
+            requiresExam,
+            arrivalTime: new Date().toLocaleString()
+        };
+
+        patients.push(patient);
+        alert('Ficha del paciente guardada exitosamente');
+        displayPatients(); // Actualiza la lista de pacientes
+        clearPatientForm();
+    }
+
+    // Mostrar la lista de pacientes guardados
+    function displayPatients() {
+        const patientList = document.getElementById('patient-list');
+        patientList.innerHTML = '<h2>Pacientes Guardados</h2>'; // Reinicia el contenido
+        patients.forEach((patient, index) => {
+            const patientItem = document.createElement('div');
+            patientItem.className = 'patient-item';
+            patientItem.innerHTML = `
+                <strong>Paciente ${index + 1}:</strong><br>
+                Nombre: ${patient.name}<br>
+                Edad: ${patient.age}<br>
+                Patología: ${patient.pathology}<br>
+                Área: ${patient.area}<br>
+                Necesita Examen: ${patient.requiresExam ? 'Sí' : 'No'}<br>
+                Hora de Llegada: ${patient.arrivalTime}
+            `;
+            patientList.appendChild(patientItem);
+        });
+    }
+
+    // Limpiar el formulario de paciente
+    function clearPatientForm() {
+        document.getElementById('patient-name').value = '';
+        document.getElementById('patient-age').value = '';
+        document.getElementById('patient-pathology').value = '';
+        document.getElementById('patient-area').value = 'Urgencias';
+        document.getElementById('requires-exam').checked = false;
+    }
+
+    // Función para volver a la pantalla de login
+    function goBack() {
+        document.getElementById('login-container').style.display = 'block';
+        document.getElementById('patient-form').style.display = 'none';
+        clearPatientForm(); // Limpia los campos del formulario
+        document.getElementById('error-login').innerText = ''; // Limpia el error del login
+    }
+</script>
+
+</body>
+</html>
