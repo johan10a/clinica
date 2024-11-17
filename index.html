@@ -59,6 +59,12 @@
             padding: 10px;
             margin-bottom: 10px;
         }
+        .edit-button {
+            background-color: #f0ad4e;
+        }
+        button.edit-button:hover {
+            background-color: #ec971f;
+        }
     </style>
 </head>
 <body>
@@ -94,15 +100,23 @@
 </div>
 
 <script>
-    // Array para manejar usuarios de la clínica (médicos, administradores)
+    // Array para manejar usuarios de la clínica (médicos, administradores, pacientes)
     const users = [
         { username: 'admin', password: 'admin123', role: 'admin' },
         { username: 'doctor1', password: 'doctor123', role: 'doctor' },
-        { username: 'doctor2', password: 'doctor123', role: 'doctor' }
+        { username: 'doctor2', password: 'doctor123', role: 'doctor' },
+        { username: 'emergency', password: 'emergency123', role: 'emergency' },
+        { username: 'paciente1', password: 'paciente123', role: 'paciente' }
     ];
 
     // Array para almacenar las fichas de los pacientes
-    const patients = [];
+    const patients = [
+        { username: 'paciente1', name: 'Juan Pérez', age: '35', pathology: 'Gripe', area: 'Urgencias', requiresExam: true, arrivalTime: '2024-11-10 08:00:00' },
+        { username: 'paciente2', name: 'Ana García', age: '40', pathology: 'Dolor abdominal', area: 'Medicina General', requiresExam: false, arrivalTime: '2024-11-10 09:00:00' }
+    ];
+
+    let currentUser = null; // Almacenará al usuario actualmente logueado
+    let editingIndex = -1; // Índice del paciente que está siendo editado
 
     // Login básico
     function login() {
@@ -111,14 +125,16 @@
         const user = users.find(u => u.username === username && u.password === password);
 
         if (user) {
+            currentUser = user; // Guardar al usuario logueado
             document.getElementById('login-container').style.display = 'none';
             document.getElementById('patient-form').style.display = 'block';
+            displayPatients(); // Mostrar pacientes después del login
         } else {
             document.getElementById('error-login').innerText = 'Usuario o contraseña incorrectos';
         }
     }
 
-    // Guardar ficha del paciente
+    // Guardar o actualizar ficha del paciente
     function savePatient() {
         const name = document.getElementById('patient-name').value;
         const age = document.getElementById('patient-age').value;
@@ -131,39 +147,89 @@
             return;
         }
 
-        const patient = {
-            name,
-            age,
-            pathology,
-            area,
-            requiresExam,
-            arrivalTime: new Date().toLocaleString()
-        };
+        if (editingIndex === -1) {
+            // Si no estamos editando un paciente, lo agregamos
+            const patient = {
+                username: currentUser.username, // Guardamos el username del paciente
+                name,
+                age,
+                pathology,
+                area,
+                requiresExam,
+                arrivalTime: new Date().toLocaleString()
+            };
+            patients.push(patient);
+            alert('Ficha del paciente guardada exitosamente');
+        } else {
+            // Si estamos editando, actualizamos los datos del paciente
+            patients[editingIndex] = {
+                username: currentUser.username, // Guardamos el username del paciente
+                name,
+                age,
+                pathology,
+                area,
+                requiresExam,
+                arrivalTime: patients[editingIndex].arrivalTime // Mantener la hora de llegada
+            };
+            alert('Ficha del paciente actualizada exitosamente');
+        }
 
-        patients.push(patient);
-        alert('Ficha del paciente guardada exitosamente');
         displayPatients(); // Actualiza la lista de pacientes
-        clearPatientForm();
+        clearPatientForm(); // Limpia el formulario
     }
 
     // Mostrar la lista de pacientes guardados
     function displayPatients() {
         const patientList = document.getElementById('patient-list');
         patientList.innerHTML = '<h2>Pacientes Guardados</h2>'; // Reinicia el contenido
-        patients.forEach((patient, index) => {
-            const patientItem = document.createElement('div');
-            patientItem.className = 'patient-item';
-            patientItem.innerHTML = `
-                <strong>Paciente ${index + 1}:</strong><br>
-                Nombre: ${patient.name}<br>
-                Edad: ${patient.age}<br>
-                Patología: ${patient.pathology}<br>
-                Área: ${patient.area}<br>
-                Necesita Examen: ${patient.requiresExam ? 'Sí' : 'No'}<br>
-                Hora de Llegada: ${patient.arrivalTime}
-            `;
-            patientList.appendChild(patientItem);
-        });
+
+        if (currentUser.role === 'paciente') {
+            // Si el usuario es un paciente, solo mostramos su propia información
+            const patient = patients.find(p => p.username === currentUser.username);
+            if (patient) {
+                const patientItem = document.createElement('div');
+                patientItem.className = 'patient-item';
+                patientItem.innerHTML = `
+                    <strong>Paciente:</strong><br>
+                    Nombre: ${patient.name}<br>
+                    Edad: ${patient.age}<br>
+                    Patología: ${patient.pathology}<br>
+                    Área: ${patient.area}<br>
+                    Necesita Examen: ${patient.requiresExam ? 'Sí' : 'No'}<br>
+                    Hora de Llegada: ${patient.arrivalTime}<br>
+                `;
+                patientList.appendChild(patientItem);
+            }
+        } else {
+            // Si el usuario no es un paciente, mostramos todos los pacientes
+            patients.forEach((patient, index) => {
+                const patientItem = document.createElement('div');
+                patientItem.className = 'patient-item';
+                patientItem.innerHTML = `
+                    <strong>Paciente ${index + 1}:</strong><br>
+                    Nombre: ${patient.name}<br>
+                    Edad: ${patient.age}<br>
+                    Patología: ${patient.pathology}<br>
+                    Área: ${patient.area}<br>
+                    Necesita Examen: ${patient.requiresExam ? 'Sí' : 'No'}<br>
+                    Hora de Llegada: ${patient.arrivalTime}<br>
+                    <button class="edit-button" onclick="editPatient(${index})">Editar</button>
+                `;
+                patientList.appendChild(patientItem);
+            });
+        }
+    }
+
+    // Editar la información de un paciente
+    function editPatient(index) {
+        const patient = patients[index];
+        document.getElementById('patient-name').value = patient.name;
+        document.getElementById('patient-age').value = patient.age;
+        document.getElementById('patient-pathology').value = patient.pathology;
+        document.getElementById('patient-area').value = patient.area;
+        document.getElementById('requires-exam').checked = patient.requiresExam;
+        editingIndex = index;
+        document.querySelector('button[onclick="savePatient()"]').innerText = 'Actualizar Ficha';
     }
 
     // Limpiar el formulario de paciente
@@ -173,16 +239,18 @@
         document.getElementById('patient-pathology').value = '';
         document.getElementById('patient-area').value = 'Urgencias';
         document.getElementById('requires-exam').checked = false;
+        editingIndex = -1;
+        document.querySelector('button[onclick="savePatient()"]').innerText = 'Guardar Ficha';
     }
 
-    // Función para volver a la pantalla de login
+    // Volver al login
     function goBack() {
         document.getElementById('login-container').style.display = 'block';
         document.getElementById('patient-form').style.display = 'none';
-        clearPatientForm(); // Limpia los campos del formulario
-        document.getElementById('error-login').innerText = ''; // Limpia el error del login
+        currentUser = null;
     }
 </script>
 
 </body>
 </html>
+
