@@ -65,9 +65,48 @@
         button.edit-button:hover {
             background-color: #ec971f;
         }
+        .navbar {
+        background-color: #7ba145;
+        overflow: hidden;
+    }
+    .navbar a {
+        float: left;
+        display: block;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+    .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    .navbar .left{
+        float: left;
+    }
+    .navbar .right {
+        float: right;
+    }
+    .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 680px;
+        height: 200px;
+    }
     </style>
 </head>
+
 <body>
+    <div class="navbar" id="navbar">
+        <img src="img/qqqq.png" alt="Logo centro medico"class="left">
+        <a href="#" id="Inicio" class="right">Inicio</a>
+        <a href="#" id="Nosotros"  class="right">Pacientes</a>
+        <a href="#" id="Afiliaciones" class="right">Login</a>
+        <a href="#" id="Contáctanos" class="right" >Logout</a>
+    </div>
+
+    <img src="img/th__1_-fotor-2024102519394-removebg-preview.png" alt="" class="logo">
 
 <div class="container" id="login-container">
     <h1>Login</h1>
