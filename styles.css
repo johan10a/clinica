@@ -1,3 +1,4 @@
+/* Estilos del index */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f9;
@@ -26,14 +27,14 @@ select {
 button {
   width: 100%;
   padding: 10px;
-  background-color: #5cb85c;
+  background-color: #00796b;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 button:hover {
-  background-color: #4cae4c;
+  background-color: #00796b;
 }
 .back-button {
   background-color: #d9534f;
@@ -89,4 +90,229 @@ button.edit-button:hover {
   align-items: center;
   margin-left: 250px;
   height: 100px;
+}
+
+/* General */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+header {
+  background-color: #00796b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+header img {
+  height: 50px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  background: url('img/clinica.jpg') no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.content {
+  padding: 20px;
+  text-align: center;
+}
+
+.content h1 {
+  color: #00796b;
+}
+
+footer {
+  background-color: #004d40;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+}
+
+
+
+
+/* General */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #00796b;
+  color: #fff;
+}
+
+header img {
+  height: 50px;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #004d40;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.hero .btn {
+  background-color: #00796b;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.hero .btn:hover {
+  background-color: #004d40;
+}
+
+/* Highlights Section */
+.highlights {
+  padding: 20px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.highlights h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.highlights .cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card h3 {
+  color: #00796b;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Testimonials Section */
+.testimonials {
+  background-color: #f0f0f0;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.testimonial {
+  margin: 10px auto;
+  max-width: 600px;
+  font-style: italic;
+  color: #555;
+}
+
+.testimonial cite {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Info Section */
+.info {
+  padding: 20px;
+  text-align: center;
+}
+
+.info h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.info ul {
+  list-style-type: disc;
+  margin: 10px auto;
+  max-width: 600px;
+  text-align: left;
+  color: #555;
+}
+
+.info ul li {
+  margin: 5px 0;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #00796b;
+  color: white;
+  font-size: 0.9em;
+}
+
+footer p {
+  margin: 0;
 }
