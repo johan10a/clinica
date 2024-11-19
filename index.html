@@ -1,64 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Centro Medico Jardines Del Recuerdo</title>
+    <title>Centro Médico Jardines Del Recuerdo</title>
     <link rel="stylesheet" href="style.css">
-   
-  </head>
-
-  <body>
+</head>
+<body>
     <div class="navbar" id="navbar">
-      <img src="img/logo.png" alt="Logo centro medico" class="left" />
-      <a href="#" id="Inicio" class="right">Inicio</a>
-      <a href="#" id="Nosotros" class="right">Pacientes</a>
-      <a href="#" id="Afiliaciones" class="right">Login</a>
-      <a href="#" id="Contáctanos" class="right">Logout</a>
+        <img src="img/logo.png" alt="Logo centro médico" class="left" />
+        <a href="#" id="Inicio" class="right">Inicio</a>
+        <a href="#" id="Nosotros" class="right">Pacientes</a>
+        <a href="#" id="Afiliaciones" class="right">Login</a>
+        <a href="#" id="Contáctanos" class="right">Logout</a>
     </div>
 
     <div class="container" id="login-container">
-      <img src="img/logo.png" alt="" class="logo" />
-
-      <h1>Login</h1>
-      <div id="error-login" class="error"></div>
-      <input type="text" id="username" placeholder="Usuario" />
-      <input type="password" id="password" placeholder="Contraseña" />
-      <button onclick="login()">Ingresar</button>
+        <img src="img/logo.png" alt="" class="logo" />
+        <h1>Login</h1>
+        <div id="error-login" class="error"></div>
+        <input type="text" id="username" placeholder="Usuario" />
+        <input type="password" id="password" placeholder="Contraseña" />
+        <button onclick="login()">Ingresar</button>
     </div>
 
     <div class="container" id="patient-form" style="display: none">
-      <h1>Ficha del Paciente</h1>
-      <div id="error-patient" class="error"></div>
-      <input type="text" id="patient-name" placeholder="Nombre del paciente" />
-      <input type="text" id="patient-age" placeholder="Edad" />
-      <input type="text" id="patient-pathology" placeholder="Patología" />
+        <h1>Ficha del Paciente</h1>
+        <div id="error-patient" class="error"></div>
+        <input type="text" id="patient-name" placeholder="Nombre del paciente" />
+        <input type="text" id="patient-age" placeholder="Edad" />
+        <input type="text" id="patient-pathology" placeholder="Patología" />
+        <select id="patient-area">
+            <option value="Urgencias">Urgencias</option>
+            <option value="Medicina General">Medicina General</option>
+            <option value="Emergencias">Emergencias</option>
+        </select>
+        <select id="patient-epsRemitente">
+            <option value="">Seleccione una EPS</option>
+            <option value="sanitas">EPS Sanitas</option>
+            <option value="comfandi">Comfandi</option>
+            <option value="sura">EPS Sura</option>
+            <option value="sisben">Sisben</option>
+            <option value="otra">Otra</option>
+        </select>
+        <label>
+            <input type="checkbox" id="requires-exam" /> Necesita Examen
+        </label>
+        <button onclick="savePatient()">Guardar Ficha</button>
+        <button class="back-button" onclick="goBack()">Volver Atrás</button>
 
-      <select id="patient-area">
-        <option value="Urgencias">Urgencias</option>
-        <option value="Medicina General">Medicina General</option>
-        <option value="Emergencias">Emergencias</option>
-      </select>
-
-      <select id="patient-epsRemitente">
-        <option value="">Seleccione una EPS</option>
-        <option value="sanitas">EPS Sanitas</option>
-        <option value="comfandi">Comfandi</option>
-        <option value="sura">EPS Sura</option>
-        <option value="sisben">sisben</option>
-        <option value="otra">otra</option>
-      </select>
-      <label>
-        <input type="checkbox" id="requires-exam" /> Necesita Examen
-      </label>
-      <button onclick="savePatient()">Guardar Ficha</button>
-      <button class="back-button" onclick="goBack()">Volver Atrás</button>
-
-      <div class="patient-list" id="patient-list">
-        <h2>Pacientes Guardados</h2>
-      </div>
+        <div class="patient-list" id="patient-list">
+            <h2>Pacientes Guardados</h2>
+        </div>
     </div>
 
     <script src="scripts.js"></script>
-  </body>
+    
+</body>
 </html>
