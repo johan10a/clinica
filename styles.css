@@ -316,3 +316,41 @@ footer {
 footer p {
   margin: 0;
 }
+
+
+/* Contacto */
+/* Estilo para el botón flotante */
+.btn-whatsapp {
+  position: fixed;
+  bottom: 20px; /* Separación desde la parte inferior */
+  right: 10px; /* Separación desde la parte derecha */
+  background-color: #25d366; /* Color de WhatsApp */
+  color: white;
+  padding: 10px 15px; /* Espaciado ajustado */
+  border-radius: 25px; /* Bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px; /* Tamaño de texto ajustado */
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 1000;
+  max-width: 250px; /* Ancho máximo */
+  transition: transform 0.3s ease;
+  white-space: nowrap;
+}
+
+/* Efecto al pasar el cursor */
+.btn-whatsapp:hover {
+  transform: scale(1.05); /* Efecto de zoom */
+}
+
+/* Texto dentro del botón */
+.btn-text {
+  font-size: 14px;
+  text-align: center;
+  display: block;
+  max-width: 230px;
+  word-wrap: break-word;
+}
