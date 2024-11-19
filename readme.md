@@ -78,7 +78,7 @@ El organigrama describe la estructura jerárquica del **Centro Médico Jardines 
 - **Personal:**
   - Cada jefe supervisa un equipo médico dividido en turnos **diurnos** y **nocturnos**.
 
-### Consulta el organigrama visual en el archivo [organigrama](img/Organigrama.png).
+### Consulta el organigrama visual en el archivo [organigrama](docs/img/Organigrama.png).
 
 
 # Diagrama UML
@@ -120,4 +120,4 @@ El diagrama UML del sistema detalla las relaciones entre las entidades principal
 
 Este modelo refleja la estructura jerárquica y las relaciones entre las entidades, facilitando la organización de la información.
 
-### Consulta el diagrama UML visual en el archivo [diagrama-uml](img/Uml.png).
+### Consulta el diagrama UML visual en el archivo [diagrama-uml](docs/img/Uml.png).
