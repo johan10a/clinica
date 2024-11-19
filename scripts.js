@@ -1,10 +1,10 @@
 const users = [
-  { username: "admin", password: "admin123", role: "admin" },
-  { username: "doctor1", password: "doctor123", role: "doctor" },
-  { username: "doctor2", password: "doctor123", role: "doctor" },
-  { username: "emergency", password: "emergency123", role: "admin" },
-  { username: "juan", password: "paciente123", role: "paciente" },
-  { username: "ana", password: "paciente123", role: "paciente" },
+  { username: "gerente", password: "gerente123", role: "admin" },
+  { username: "doctor mario", password: "doctor123", role: "doctor" },
+  { username: "doctor jose", password: "doctor123", role: "doctor" },
+  { username: "emergencia", password: "emergencia123", role: "admin" },
+  { username: "juan", password: "juan123", role: "paciente" },
+  { username: "ana", password: "ana123", role: "paciente" },
 ];
 
 const patients = [
