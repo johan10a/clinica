@@ -1,295 +1,345 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Software Clínica</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Centro Medico Jardines Del Recuerdo</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-        }
-        input[type="text"], input[type="password"], select {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #5cb85c;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #4cae4c;
-        }
-        .back-button {
-            background-color: #d9534f;
-        }
-        button.back-button:hover {
-            background-color: #c9302c;
-        }
-        .error {
-            color: red;
-            font-size: 14px;
-        }
-        .patient-list {
-            margin-top: 20px;
-        }
-        .patient-item {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        .edit-button {
-            background-color: #f0ad4e;
-        }
-        button.edit-button:hover {
-            background-color: #ec971f;
-        }
-        .navbar {
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+      }
+      input[type="text"],
+      input[type="password"],
+      select {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #5cb85c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #4cae4c;
+      }
+      .back-button {
+        background-color: #d9534f;
+      }
+      button.back-button:hover {
+        background-color: #c9302c;
+      }
+      .error {
+        color: red;
+        font-size: 14px;
+      }
+      .patient-list {
+        margin-top: 20px;
+      }
+      .patient-item {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      .edit-button {
+        background-color: #f0ad4e;
+      }
+      button.edit-button:hover {
+        background-color: #ec971f;
+      }
+      .navbar {
         background-color: #7ba145;
         overflow: hidden;
-    }
-    .navbar a {
+      }
+      .navbar a {
         float: left;
         display: block;
         color: rgb(255, 255, 255);
         text-align: center;
         padding: 14px 20px;
         text-decoration: none;
-    }
-    .navbar a:hover {
+      }
+      .navbar a:hover {
         background-color: #ddd;
         color: black;
-    }
-    .navbar .left{
+      }
+      .navbar .left {
         float: left;
-    }
-    .navbar .right {
+        height: 50px;
+      }
+      .navbar .right {
         float: right;
-    }
-    .logo{
+      }
+      .logo {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-left: 680px;
-        height: 200px;
-    }
+        margin-left: 250px;
+        height: 100px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="navbar" id="navbar">
-        <img src="img/qqqq.png" alt="Logo centro medico"class="left">
-        <a href="#" id="Inicio" class="right">Inicio</a>
-        <a href="#" id="Nosotros"  class="right">Pacientes</a>
-        <a href="#" id="Afiliaciones" class="right">Login</a>
-        <a href="#" id="Contáctanos" class="right" >Logout</a>
+      <img src="img/logo.png" alt="Logo centro medico" class="left" />
+      <a href="#" id="Inicio" class="right">Inicio</a>
+      <a href="#" id="Nosotros" class="right">Pacientes</a>
+      <a href="#" id="Afiliaciones" class="right">Login</a>
+      <a href="#" id="Contáctanos" class="right">Logout</a>
     </div>
 
-    <img src="img/th__1_-fotor-2024102519394-removebg-preview.png" alt="" class="logo">
+    <div class="container" id="login-container">
+      <img src="img/logo.png" alt="" class="logo" />
 
-<div class="container" id="login-container">
-    <h1>Login</h1>
-    <div id="error-login" class="error"></div>
-    <input type="text" id="username" placeholder="Usuario">
-    <input type="password" id="password" placeholder="Contraseña">
-    <button onclick="login()">Ingresar</button>
-</div>
+      <h1>Login</h1>
+      <div id="error-login" class="error"></div>
+      <input type="text" id="username" placeholder="Usuario" />
+      <input type="password" id="password" placeholder="Contraseña" />
+      <button onclick="login()">Ingresar</button>
+    </div>
 
-<div class="container" id="patient-form" style="display:none;">
-    <h1>Ficha del Paciente</h1>
-    <div id="error-patient" class="error"></div>
-    <input type="text" id="patient-name" placeholder="Nombre del paciente">
-    <input type="text" id="patient-age" placeholder="Edad">
-    <input type="text" id="patient-pathology" placeholder="Patología">
-    <select id="patient-area">
+    <div class="container" id="patient-form" style="display: none">
+      <h1>Ficha del Paciente</h1>
+      <div id="error-patient" class="error"></div>
+      <input type="text" id="patient-name" placeholder="Nombre del paciente" />
+      <input type="text" id="patient-age" placeholder="Edad" />
+      <input type="text" id="patient-pathology" placeholder="Patología" />
+
+      <select id="patient-area">
         <option value="Urgencias">Urgencias</option>
         <option value="Medicina General">Medicina General</option>
         <option value="Emergencias">Emergencias</option>
-    </select>
-    <label>
-        <input type="checkbox" id="requires-exam"> Necesita Examen
-    </label>
-    <button onclick="savePatient()">Guardar Ficha</button>
-    <button class="back-button" onclick="goBack()">Volver Atrás</button>
+      </select>
 
-    <div class="patient-list" id="patient-list">
+      <select id="patient-epsRemitente">
+        <option value="">Seleccione una EPS</option>
+        <option value="sanitas">EPS Sanitas</option>
+        <option value="comfandi">Comfandi</option>
+        <option value="sura">EPS Sura</option>
+        <option value="sisben">sisben</option>
+        <option value="otra">otra</option>
+      </select>
+      <label>
+        <input type="checkbox" id="requires-exam" /> Necesita Examen
+      </label>
+      <button onclick="savePatient()">Guardar Ficha</button>
+      <button class="back-button" onclick="goBack()">Volver Atrás</button>
+
+      <div class="patient-list" id="patient-list">
         <h2>Pacientes Guardados</h2>
+      </div>
     </div>
-</div>
 
-<script>
-    // Array para manejar usuarios de la clínica (médicos, administradores, pacientes)
-    const users = [
-        { username: 'admin', password: 'admin123', role: 'admin' },
-        { username: 'doctor1', password: 'doctor123', role: 'doctor' },
-        { username: 'doctor2', password: 'doctor123', role: 'doctor' },
-        { username: 'emergency', password: 'emergency123', role: 'emergency' },
-        { username: 'paciente1', password: 'paciente123', role: 'paciente' }
-    ];
+    <script>
+      // Array para manejar usuarios de la clínica (médicos, administradores, pacientes)
+      const users = [
+        { username: "admin", password: "admin123", role: "admin" },
+        { username: "doctor1", password: "doctor123", role: "doctor" },
+        { username: "doctor2", password: "doctor123", role: "doctor" },
+        { username: "emergency", password: "emergency123", role: "admin" },
+        { username: "juan", password: "paciente123", role: "paciente" },
+        { username: "1", password: "1", role: "paciente" },
 
-    // Array para almacenar las fichas de los pacientes
-    const patients = [
-        { username: 'paciente1', name: 'Juan Pérez', age: '35', pathology: 'Gripe', area: 'Urgencias', requiresExam: true, arrivalTime: '2024-11-10 08:00:00' },
-        { username: 'paciente2', name: 'Ana García', age: '40', pathology: 'Dolor abdominal', area: 'Medicina General', requiresExam: false, arrivalTime: '2024-11-10 09:00:00' }
-    ];
+      ];
 
-    let currentUser = null; // Almacenará al usuario actualmente logueado
-    let editingIndex = -1; // Índice del paciente que está siendo editado
+      // Array para almacenar las fichas de los pacientes
+      const patients = [
+        {
+          username: "1",
+          name: "Juan Pérez",
+          age: "35",
+          pathology: "Gripe",
+          area: "Urgencias",
+          epsRemitente:"Sanitas",
+          requiresExam: true,
+          arrivalTime: "2024-11-10 08:00:00",
+        },
+        {
+          username: "ana",
+          name: "Ana García",
+          age: "40",
+          pathology: "Dolor abdominal",
+          area: "Medicina General",
+          epsRemitente:"Comfandi",
+          requiresExam: false,
+          arrivalTime: "2024-11-10 09:00:00",
+        },
+      ];
 
-    // Login básico
-    function login() {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const user = users.find(u => u.username === username && u.password === password);
+      let currentUser = null; // Almacenará al usuario actualmente logueado
+      let editingIndex = -1; // Índice del paciente que está siendo editado
+
+      // Login básico
+      function login() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const user = users.find(
+          (u) => u.username === username && u.password === password
+        );
 
         if (user) {
-            currentUser = user; // Guardar al usuario logueado
-            document.getElementById('login-container').style.display = 'none';
-            document.getElementById('patient-form').style.display = 'block';
-            displayPatients(); // Mostrar pacientes después del login
-        } else {
-            document.getElementById('error-login').innerText = 'Usuario o contraseña incorrectos';
-        }
-    }
+          currentUser = user; // Guardar al usuario logueado
+          document.getElementById("login-container").style.display = "none";
+          document.getElementById("patient-form").style.display = "block";
 
-    // Guardar o actualizar ficha del paciente
-    function savePatient() {
-        const name = document.getElementById('patient-name').value;
-        const age = document.getElementById('patient-age').value;
-        const pathology = document.getElementById('patient-pathology').value;
-        const area = document.getElementById('patient-area').value;
-        const requiresExam = document.getElementById('requires-exam').checked;
+          displayPatients(); // Mostrar pacientes después del login
+        } else {
+          document.getElementById("error-login").innerText =
+            "Usuario o contraseña incorrectos";
+        }
+      }
+      
+
+      // Guardar o actualizar ficha del paciente
+      function savePatient() {
+        const name = document.getElementById("patient-name").value;
+        const age = document.getElementById("patient-age").value;
+        const pathology = document.getElementById("patient-pathology").value;
+        const area = document.getElementById("patient-area").value;
+        const epsRemitente = document.getElementById("patient-epsRemitente").value;
+        const requiresExam = document.getElementById("requires-exam").checked;
 
         if (!name || !age || !pathology) {
-            document.getElementById('error-patient').innerText = 'Todos los campos son obligatorios';
-            return;
+          document.getElementById("error-patient").innerText =
+            "Todos los campos son obligatorios";
+          return;
         }
 
         if (editingIndex === -1) {
-            // Si no estamos editando un paciente, lo agregamos
-            const patient = {
-                username: currentUser.username, // Guardamos el username del paciente
-                name,
-                age,
-                pathology,
-                area,
-                requiresExam,
-                arrivalTime: new Date().toLocaleString()
-            };
-            patients.push(patient);
-            alert('Ficha del paciente guardada exitosamente');
+          // Si no estamos editando un paciente, lo agregamos
+          const patient = {
+            username: currentUser.username, // Guardamos el username del paciente
+            name,
+            age,
+            pathology,
+            area,
+            epsRemitente,
+            requiresExam,
+            arrivalTime: new Date().toLocaleString(),
+          };
+          patients.push(patient);
+          alert("Ficha del paciente guardada exitosamente");
         } else {
-            // Si estamos editando, actualizamos los datos del paciente
-            patients[editingIndex] = {
-                username: currentUser.username, // Guardamos el username del paciente
-                name,
-                age,
-                pathology,
-                area,
-                requiresExam,
-                arrivalTime: patients[editingIndex].arrivalTime // Mantener la hora de llegada
-            };
-            alert('Ficha del paciente actualizada exitosamente');
+          // Si estamos editando, actualizamos los datos del paciente
+          patients[editingIndex] = {
+            username: currentUser.username, // Guardamos el username del paciente
+            name,
+            age,
+            pathology,
+            area,
+            epsRemitente,
+            requiresExam,
+            arrivalTime: patients[editingIndex].arrivalTime, // Mantener la hora de llegada
+          };
+          alert("Ficha del paciente actualizada exitosamente");
         }
 
         displayPatients(); // Actualiza la lista de pacientes
         clearPatientForm(); // Limpia el formulario
-    }
+      }
 
-    // Mostrar la lista de pacientes guardados
-    function displayPatients() {
-        const patientList = document.getElementById('patient-list');
-        patientList.innerHTML = '<h2>Pacientes Guardados</h2>'; // Reinicia el contenido
+      // Mostrar la lista de pacientes guardados
+      function displayPatients() {
+        const patientList = document.getElementById("patient-list");
+        patientList.innerHTML = "<h2>Pacientes Guardados</h2>"; // Reinicia el contenido
 
-        if (currentUser.role === 'paciente') {
-            // Si el usuario es un paciente, solo mostramos su propia información
-            const patient = patients.find(p => p.username === currentUser.username);
-            if (patient) {
-                const patientItem = document.createElement('div');
-                patientItem.className = 'patient-item';
-                patientItem.innerHTML = `
+        if (currentUser.role === "paciente") {
+          // Si el usuario es un paciente, solo mostramos su propia información
+          const patient = patients.find(
+            (p) => p.username === currentUser.username
+          );
+          if (patient) {
+            const patientItem = document.createElement("div");
+            patientItem.className = "patient-item";
+            patientItem.innerHTML = `
                     <strong>Paciente:</strong><br>
                     Nombre: ${patient.name}<br>
                     Edad: ${patient.age}<br>
                     Patología: ${patient.pathology}<br>
                     Área: ${patient.area}<br>
-                    Necesita Examen: ${patient.requiresExam ? 'Sí' : 'No'}<br>
+                    EPS Remitente: ${patient.epsRemitente}<br>
+                    Necesita Examen: ${patient.requiresExam ? "Sí" : "No"}<br>
                     Hora de Llegada: ${patient.arrivalTime}<br>
                 `;
-                patientList.appendChild(patientItem);
-            }
+            patientList.appendChild(patientItem);
+          }
         } else {
-            // Si el usuario no es un paciente, mostramos todos los pacientes
-            patients.forEach((patient, index) => {
-                const patientItem = document.createElement('div');
-                patientItem.className = 'patient-item';
-                patientItem.innerHTML = `
+          // Si el usuario no es un paciente, mostramos todos los pacientes
+          patients.forEach((patient, index) => {
+            const patientItem = document.createElement("div");
+            patientItem.className = "patient-item";
+            patientItem.innerHTML = `
                     <strong>Paciente ${index + 1}:</strong><br>
                     Nombre: ${patient.name}<br>
                     Edad: ${patient.age}<br>
                     Patología: ${patient.pathology}<br>
                     Área: ${patient.area}<br>
-                    Necesita Examen: ${patient.requiresExam ? 'Sí' : 'No'}<br>
+                    EPS remitente: ${patient.epsRemitente}<br>
+                    Necesita Examen: ${patient.requiresExam ? "Sí" : "No"}<br>
                     Hora de Llegada: ${patient.arrivalTime}<br>
                     <button class="edit-button" onclick="editPatient(${index})">Editar</button>
                 `;
-                patientList.appendChild(patientItem);
-            });
+            patientList.appendChild(patientItem);
+          });
         }
-    }
+      }
 
-    // Editar la información de un paciente
-    function editPatient(index) {
+      // Editar la información de un paciente
+      function editPatient(index) {
         const patient = patients[index];
-        document.getElementById('patient-name').value = patient.name;
-        document.getElementById('patient-age').value = patient.age;
-        document.getElementById('patient-pathology').value = patient.pathology;
-        document.getElementById('patient-area').value = patient.area;
-        document.getElementById('requires-exam').checked = patient.requiresExam;
+        document.getElementById("patient-name").value = patient.name;
+        document.getElementById("patient-age").value = patient.age;
+        document.getElementById("patient-pathology").value = patient.pathology;
+        document.getElementById("patient-area").value = patient.area;
+        document.getElementById("patient-epsRemitente").value = patient.epsRemitente;
+        document.getElementById("requires-exam").checked = patient.requiresExam;
         editingIndex = index;
-        document.querySelector('button[onclick="savePatient()"]').innerText = 'Actualizar Ficha';
-    }
+        document.querySelector('button[onclick="savePatient()"]').innerText =
+          "Actualizar Ficha";
+      }
 
-    // Limpiar el formulario de paciente
-    function clearPatientForm() {
-        document.getElementById('patient-name').value = '';
-        document.getElementById('patient-age').value = '';
-        document.getElementById('patient-pathology').value = '';
-        document.getElementById('patient-area').value = 'Urgencias';
-        document.getElementById('requires-exam').checked = false;
+      // Limpiar el formulario de paciente
+      function clearPatientForm() {
+        document.getElementById("patient-name").value = "";
+        document.getElementById("patient-age").value = "";
+        document.getElementById("patient-pathology").value = "";
+        document.getElementById("patient-area").value = "Urgencias";
+        document.getElementById("patient-epsRemitente").value = "epsRemitente";
+        epsRemitente
+        document.getElementById("requires-exam").checked = false;
         editingIndex = -1;
-        document.querySelector('button[onclick="savePatient()"]').innerText = 'Guardar Ficha';
-    }
+        document.querySelector('button[onclick="savePatient()"]').innerText =
+          "Guardar Ficha";
+      }
 
-    // Volver al login
-    function goBack() {
-        document.getElementById('login-container').style.display = 'block';
-        document.getElementById('patient-form').style.display = 'none';
+      // Volver al login
+      function goBack() {
+        document.getElementById("login-container").style.display = "block";
+        
+        document.getElementById("patient-form").style.display = "none";
         currentUser = null;
-    }
-</script>
-
-</body>
+      }
+    </script>
+  </body>
 </html>
-
