@@ -103,24 +103,35 @@ function displayPatients() {
   });
 }
 
-function downloadPatient(index) {
+async function downloadPatient(index) {
+  const { jsPDF } = window.jspdf;
+
   const patient = currentUser.role === "paciente"
       ? patients.find(p => p.username === currentUser.username)
       : patients[index];
 
   if (!patient) return alert("No tienes permisos para descargar esta ficha.");
 
-  const dataStr = JSON.stringify(patient, null, 2);
-  const blob = new Blob([dataStr], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
+  const pdf = new jsPDF();
 
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = `Ficha-${patient.name}.json`;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  // Título
+  pdf.setFontSize(18);
+  pdf.text("Ficha del Paciente", 10, 10);
+
+  // Información del paciente
+  pdf.setFontSize(12);
+  pdf.text(`Nombre: ${patient.name}`, 10, 30);
+  pdf.text(`Edad: ${patient.age}`, 10, 40);
+  pdf.text(`Patología: ${patient.pathology}`, 10, 50);
+  pdf.text(`Área: ${patient.area}`, 10, 60);
+  pdf.text(`EPS Remitente: ${patient.epsRemitente}`, 10, 70);
+  pdf.text(`Necesita Examen: ${patient.requiresExam ? "Sí" : "No"}`, 10, 80);
+  pdf.text(`Hora de Llegada: ${patient.arrivalTime}`, 10, 90);
+
+  // Guardar como PDF
+  pdf.save(`Ficha-${patient.name}.pdf`);
 }
+
 
 function goBack() {
   document.getElementById("login-container").style.display = "block";
