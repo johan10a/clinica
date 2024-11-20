@@ -1,5 +1,7 @@
 # Centro Médico Jardines del Recuerdo 🌿
 ## Proyecto de Página Web para el Centro Médico Jardines del Recuerdo
+**Autor:** Johan Alexis Chara Ferrer  
+**Licencia:** Este proyecto es de uso exclusivo con fines educativo
 
 ### Descripción
 Este proyecto consiste en el diseño y desarrollo de un sitio web estático para el Centro Médico Jardines del Recuerdo, ubicado en Cali, Colombia. El objetivo es proporcionar una experiencia profesional e intuitiva para los visitantes del sitio, permitiendo navegar por las secciones de inicio, servicios, contacto, sobre nosotros y login.
@@ -121,3 +123,5 @@ El diagrama UML del sistema detalla las relaciones entre las entidades principal
 Este modelo refleja la estructura jerárquica y las relaciones entre las entidades, facilitando la organización de la información.
 
 ### Consulta el diagrama UML visual en el archivo [diagrama-uml](docs/img/Uml.png).
+**Nota:**  
+Para obtener información más detallada, consulte la documentación o contacte al autor del proyecto.  
