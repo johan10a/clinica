@@ -124,4 +124,30 @@ Este modelo refleja la estructura jerárquica y las relaciones entre las entidad
 
 ### Consulta el diagrama UML visual en el archivo [diagrama-uml](docs/img/Uml.png).
 **Nota:**  
-Para obtener información más detallada, consulte la documentación o contacte al autor del proyecto.  
+# Usuarios y Contraseñas Guardadas
+
+## Lista de Usuarios
+
+- **Username:** gerente  
+  **Password:** gerente123  
+  **Role:** admin  
+
+- **Username:** doctor mario  
+  **Password:** doctor123  
+  **Role:** doctor  
+
+- **Username:** doctor jose  
+  **Password:** doctor123  
+  **Role:** doctor  
+
+- **Username:** emergencia  
+  **Password:** emergencia123  
+  **Role:** admin  
+
+- **Username:** juan  
+  **Password:** juan123  
+  **Role:** paciente  
+
+- **Username:** ana  
+  **Password:** ana123  
+  **Role:** paciente  
